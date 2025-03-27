@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AgGridWrapper from "./components/AgGridWrapper";
+import { useFetchData } from "./hooks/useFetchData";
+import { defaultColumns } from "./config/defaultColumns";
+import { GridRowData } from "./types/gridTypes";
 
-function App() {
+const App = () => {
+  const { data, loading, error } = useFetchData("userData");
+
+  if (loading) return <p>Loading data...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AgGridWrapper
+      rowData={data as GridRowData[]}
+      columnDefs={defaultColumns}
+      pagination
+      paginationPageSize={100}
+    />
   );
-}
+};
 
 export default App;
