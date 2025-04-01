@@ -4,7 +4,7 @@ import { defaultColumns } from "./config/defaultColumns";
 import { GridRowData } from "./types/gridTypes";
 
 const App = () => {
-  const { data, loading, error } = useFetchData("userData");
+  const { data, loading, error } = useFetchData("transactions/10000");
 
   if (loading) return <p>Loading data...</p>;
   if (error) return <p>Error: {error}</p>;
