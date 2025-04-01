@@ -5,7 +5,6 @@ import { ModuleRegistry, AllCommunityModule } from "ag-grid-community";
 
 // Register only community modules
 ModuleRegistry.registerModules([AllCommunityModule]);
-//todo: Prop Types
 
 const AgGridAdapter = ({
   rowData,
